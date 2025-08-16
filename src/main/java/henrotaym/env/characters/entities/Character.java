@@ -1,7 +1,7 @@
 package henrotaym.env.characters.entities;
 
 import henrotaym.env.films.entities.Film;
-import henrotaym.env.vehicules.entities.Vehicule;
+import henrotaym.env.vehicles.entities.Vehicle;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -62,9 +62,9 @@ public class Character {
 
   @ManyToMany
   @JoinTable(
-      name = "character_vehicule",
+      name = "character_vehicle",
       joinColumns = @JoinColumn(name = "character_id"),
-      inverseJoinColumns = @JoinColumn(name = "vehicule_id"))
+      inverseJoinColumns = @JoinColumn(name = "vehicle_id"))
   @Builder.Default
-  private Set<Vehicule> vehicules = new HashSet<>();
+  private Set<Vehicle> vehicles = new HashSet<>();
 }

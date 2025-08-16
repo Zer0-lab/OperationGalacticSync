@@ -1,4 +1,4 @@
-package henrotaym.env.vehicules.entities;
+package henrotaym.env.vehicles.entities;
 
 import henrotaym.env.characters.entities.Character;
 import jakarta.persistence.Column;
@@ -19,7 +19,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "vehicules")
+@Table(name = "vehicles")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,7 +27,7 @@ import lombok.ToString;
 @Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString(exclude = "characters")
-public class Vehicule {
+public class Vehicle {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,7 +66,7 @@ public class Vehicule {
   @Column(name = "vehicle_class")
   private String vehicleClass;
 
-  @ManyToMany(mappedBy = "vehicules")
+  @ManyToMany(mappedBy = "vehicles")
   @Builder.Default
   private Set<Character> characters = new HashSet<>();
 }

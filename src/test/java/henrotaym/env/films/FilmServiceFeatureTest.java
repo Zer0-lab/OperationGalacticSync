@@ -5,8 +5,11 @@ import static org.assertj.core.api.Assertions.*;
 import henrotaym.env.ApplicationTest;
 import henrotaym.env.characters.repositories.CharacterRepository;
 import henrotaym.env.database.factories.CharacterFactory;
+import henrotaym.env.films.entities.Film;
+import henrotaym.env.films.repositories.FilmRepository;
 import henrotaym.env.films.services.FilmService;
 import jakarta.annotation.Resource;
+import java.util.List;
 import net.datafaker.Faker;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,7 @@ class FilmServiceFeatureTest extends ApplicationTest {
 
   @Autowired FilmService filmService;
   @Autowired CharacterRepository characterRepository;
+  @Autowired FilmRepository filmRepository;
   @Autowired Faker faker;
 
   @Resource(name = "characterFactory")
@@ -46,5 +50,20 @@ class FilmServiceFeatureTest extends ApplicationTest {
     filmService.syncPage(1);
 
     assertThat(characterRepository.findByApiCharacterId(1L)).isEmpty();
+  }
+
+  @Test
+  void should_sync_all_films_from_api_page() {
+    filmService.syncPage(1);
+
+    List<Film> films = filmRepository.findAll();
+    assertThat(films)
+        .isNotEmpty()
+        .allSatisfy(
+            film -> {
+              assertThat(film.getApiFilmId()).isNotNull();
+              assertThat(film.getTitle()).isNotBlank();
+              assertThat(film.getEpisodeId()).isNotNull();
+            });
   }
 }

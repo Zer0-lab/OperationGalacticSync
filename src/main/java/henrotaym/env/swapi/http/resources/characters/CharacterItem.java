@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CharacterItems {
+public class CharacterItem {
   private CharacterFields fields;
 }

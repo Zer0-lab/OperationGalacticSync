@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SwapiReponseResource<T> {
+public class SwapiReponse<T> {
   private int count; // total d'éléments
   private int pages; // nombre total de pages
   private String next; // ex: "/api/people?page=2" ou null

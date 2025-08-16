@@ -5,30 +5,30 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <changeSet id="005_create_character_vehicule_table" author="KD">
-        <createTable tableName="character_vehicule">
+    <changeSet id="005_create_character_vehicle_table" author="KD">
+        <createTable tableName="character_vehicle">
             <column name="character_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
-            <column name="vehicule_id" type="BIGINT">
+            <column name="vehicle_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
 
-        <addPrimaryKey tableName="character_vehicule"
-                       columnNames="character_id, vehicule_id"
-                       constraintName="pk_character_vehicule"/>
+        <addPrimaryKey tableName="character_vehicle"
+                       columnNames="character_id, vehicle_id"
+                       constraintName="pk_character_vehicle"/>
 
-        <addForeignKeyConstraint baseTableName="character_vehicule"
+        <addForeignKeyConstraint baseTableName="character_vehicle"
                                  baseColumnNames="character_id"
-                                 constraintName="fk_character_vehicule_character"
+                                 constraintName="fk_character_vehicle_character"
                                  referencedTableName="characters"
                                  referencedColumnNames="id"/>
 
-        <addForeignKeyConstraint baseTableName="character_vehicule"
-                                 baseColumnNames="vehicule_id"
-                                 constraintName="fk_character_vehicule_vehicule"
-                                 referencedTableName="vehicules"
+        <addForeignKeyConstraint baseTableName="character_vehicle"
+                                 baseColumnNames="vehicle_id"
+                                 constraintName="fk_character_vehicle_vehicle"
+                                 referencedTableName="vehicles"
                                  referencedColumnNames="id"/>
     </changeSet>
 

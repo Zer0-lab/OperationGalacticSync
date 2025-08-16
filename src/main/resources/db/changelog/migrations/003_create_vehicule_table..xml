@@ -6,8 +6,8 @@
       http://www.liquibase.org/xml/ns/dbchangelog
       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
 
-  <changeSet id="003-create-vehicule-table" author="chatgpt">
-    <createTable tableName="vehicules">
+  <changeSet id="003-create-vehicle-table" author="chatgpt">
+    <createTable tableName="vehicles">
       <column name="id" type="BIGINT" autoIncrement="true">
         <constraints primaryKey="true" nullable="false"/>
       </column>

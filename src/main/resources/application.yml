@@ -32,3 +32,5 @@ spring:
 #   level:
 #     org.hibernate.orm.jdbc.bind: TRACE
 #     org.springframework.data.jpa: DEBUG
+swapi:
+  base-url: https://swapi-node.vercel.app/api
