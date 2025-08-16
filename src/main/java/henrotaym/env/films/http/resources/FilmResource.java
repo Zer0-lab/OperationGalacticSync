@@ -11,5 +11,5 @@ public class FilmResource {
   private Long apiFilmId;
   private String title;
   private Integer episodeId;
-  private Set<SimpleCharacterResource> characters; // Résumé des personnages
+  private Set<FilmResource> films;
 }

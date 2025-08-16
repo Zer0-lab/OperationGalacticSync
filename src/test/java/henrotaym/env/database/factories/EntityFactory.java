@@ -1,6 +1,5 @@
 package henrotaym.env.database.factories;
 
-import java.math.BigInteger;
 import java.util.function.Consumer;
 import lombok.AllArgsConstructor;
 import net.datafaker.Faker;
@@ -9,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 @AllArgsConstructor
 public abstract class EntityFactory<T> {
   protected Faker faker;
-  private JpaRepository<T, BigInteger> repository;
+  private JpaRepository<T, Long> repository;
 
   protected abstract T entity();
 

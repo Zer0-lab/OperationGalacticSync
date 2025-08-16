@@ -1,4 +1,4 @@
-package henrotaym.env.films.entities;
+package henrotaym.env.vehicules.entities;
 
 import henrotaym.env.characters.entities.Character;
 import jakarta.persistence.Column;
@@ -19,7 +19,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "films")
+@Table(name = "vehicules")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,23 +27,46 @@ import lombok.ToString;
 @Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString(exclude = "characters")
-public class Film {
+public class Vehicule {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @EqualsAndHashCode.Include
   private Long id;
 
-  @Column(name = "api_film_id", nullable = false, unique = true)
-  private Long apiFilmId;
+  @Column(name = "api_vehicle_id", nullable = false, unique = true)
+  private Long apiVehicleId;
 
-  @Column(name = "title", nullable = false)
-  private String title;
+  @Column(nullable = false)
+  private String name;
 
-  @Column(name = "episode_id", nullable = false)
-  private Integer episodeId;
+  @Column(nullable = false)
+  private String model;
 
-  @ManyToMany(mappedBy = "films")
+  @Column(nullable = false)
+  private String manufacturer;
+
+  @Column(name = "cost_in_credits")
+  private String costInCredits;
+
+  @Column private String length;
+
+  @Column(name = "max_atmosphering_speed")
+  private String maxAtmospheringSpeed;
+
+  @Column private String crew;
+
+  @Column private String passengers;
+
+  @Column(name = "cargo_capacity")
+  private String cargoCapacity;
+
+  @Column private String consumables;
+
+  @Column(name = "vehicle_class")
+  private String vehicleClass;
+
+  @ManyToMany(mappedBy = "vehicules")
   @Builder.Default
   private Set<Character> characters = new HashSet<>();
 }

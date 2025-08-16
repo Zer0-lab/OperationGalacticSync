@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="004_create_character_film_table" author="KD">
+        <createTable tableName="character_film">
+            <column name="character_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="film_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey tableName="character_film"
+                       columnNames="character_id, film_id"
+                       constraintName="pk_character_film"/>
+
+        <addForeignKeyConstraint baseTableName="character_film"
+                                 baseColumnNames="character_id"
+                                 constraintName="fk_character_film_character"
+                                 referencedTableName="characters"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="character_film"
+                                 baseColumnNames="film_id"
+                                 constraintName="fk_character_film_film"
+                                 referencedTableName="films"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>

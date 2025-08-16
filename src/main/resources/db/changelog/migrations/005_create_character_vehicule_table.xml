@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="005_create_character_vehicule_table" author="KD">
+        <createTable tableName="character_vehicule">
+            <column name="character_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="vehicule_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey tableName="character_vehicule"
+                       columnNames="character_id, vehicule_id"
+                       constraintName="pk_character_vehicule"/>
+
+        <addForeignKeyConstraint baseTableName="character_vehicule"
+                                 baseColumnNames="character_id"
+                                 constraintName="fk_character_vehicule_character"
+                                 referencedTableName="characters"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="character_vehicule"
+                                 baseColumnNames="vehicule_id"
+                                 constraintName="fk_character_vehicule_vehicule"
+                                 referencedTableName="vehicules"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>

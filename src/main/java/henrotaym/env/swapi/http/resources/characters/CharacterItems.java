@@ -1,4 +1,4 @@
-package henrotaym.env.swapi.http.resources.peoples;
+package henrotaym.env.swapi.http.resources.characters;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PeopleItems {
-  private PeopleFields fields;
+public class CharacterItems {
+  private CharacterFields fields;
 }
