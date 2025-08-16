@@ -1,7 +1,7 @@
 package henrotaym.env.swapi.http.resources.films;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import henrotaym.env.swapi.http.resources.PageResponse;
+import henrotaym.env.swapi.http.resources.SwapiReponseResource;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class FilmsPageResponse extends PageResponse<FilmItemResource> {}
+public class FilmPageResponse extends SwapiReponseResource<FilmItems> {}

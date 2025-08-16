@@ -1,7 +1,7 @@
 package henrotaym.env.swapi.clients;
 
 import henrotaym.env.swapi.factories.SwapiClientFactory;
-import henrotaym.env.swapi.http.resources.films.FilmsPageResponse;
+import henrotaym.env.swapi.http.resources.films.FilmPageResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
@@ -12,7 +12,7 @@ public class FilmsClient extends SwapiClientFactory {
     super(swapiRestClient);
   }
 
-  public FilmsPageResponse getFilmsPage(int page) {
-    return getPage("/films", page, FilmsPageResponse.class);
+  public FilmPageResponse getFilmsPage(int page) {
+    return getPage("/films", page, FilmPageResponse.class);
   }
 }

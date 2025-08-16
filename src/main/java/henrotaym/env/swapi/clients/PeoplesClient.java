@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
 @Component
-public class PeopleClient extends SwapiClientFactory {
+public class PeoplesClient extends SwapiClientFactory {
 
-  public PeopleClient(RestClient swapiRestClient) {
+  public PeoplesClient(RestClient swapiRestClient) {
     super(swapiRestClient);
   }
 

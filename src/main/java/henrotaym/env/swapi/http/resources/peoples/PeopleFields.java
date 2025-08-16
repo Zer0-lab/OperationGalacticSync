@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PeopleFieldsResource {
+public class PeopleFields {
   private String name;
   private String gender;
 
