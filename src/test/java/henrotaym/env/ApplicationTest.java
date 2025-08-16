@@ -1,6 +1,6 @@
 package henrotaym.env;
 
-import henrotaym.env.enums.ProfileName;
+import henrotaym.env.shared.enums.ProfileName;
 import jakarta.transaction.Transactional;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
