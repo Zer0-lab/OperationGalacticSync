@@ -30,12 +30,17 @@ public class FilmService {
               var fields = resource.getFields();
               Long apiId = extractIdFromUrl(fields.getUrl());
 
+              if (filmRepository.findByApiFilmId(apiId).isPresent()) {
+                return;
+              }
+
               Set<Character> relatedCharacters = new HashSet<>();
               fields
                   .getCharacters()
                   .forEach(
                       characterUrl -> {
                         Long charId = extractIdFromUrl(characterUrl);
+
                         characterRepository
                             .findByApiCharacterId(charId)
                             .ifPresent(
@@ -46,23 +51,13 @@ public class FilmService {
                                 });
                       });
 
-              filmRepository
-                  .findByApiFilmId(apiId)
-                  .ifPresentOrElse(
-                      existing -> {
-                        existing.setTitle(fields.getTitle());
-                        existing.setEpisodeId(fields.getEpisodeId());
-                        existing.setCharacters(relatedCharacters);
-                        filmRepository.save(existing);
-                      },
-                      () -> {
-                        Film newFilm = new Film();
-                        newFilm.setApiFilmId(apiId);
-                        newFilm.setTitle(fields.getTitle());
-                        newFilm.setEpisodeId(fields.getEpisodeId());
-                        newFilm.setCharacters(relatedCharacters);
-                        filmRepository.save(newFilm);
-                      });
+              var film = new Film();
+              film.setApiFilmId(apiId);
+              film.setTitle(fields.getTitle());
+              film.setEpisodeId(fields.getEpisodeId());
+              film.setCharacters(relatedCharacters);
+
+              filmRepository.save(film);
             });
   }
 
