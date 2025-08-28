@@ -1,6 +1,8 @@
 package henrotaym.env.films.http.resources;
 
 import java.util.Set;
+
+import henrotaym.env.characters.http.resources.CharacterResource;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -11,5 +13,5 @@ public class FilmResource {
   private Long apiFilmId;
   private String title;
   private Integer episodeId;
-  private Set<FilmResource> films;
+  private Set<CharacterResource> characters;
 }
