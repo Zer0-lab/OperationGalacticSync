@@ -2,7 +2,6 @@ package henrotaym.env.vehicles.services;
 
 import henrotaym.env.swapi.clients.VehiclesClient;
 import henrotaym.env.vehicles.entities.Vehicle;
-import henrotaym.env.vehicles.mappers.VehicleMapper;
 import henrotaym.env.vehicles.repositories.VehicleRepository;
 import jakarta.transaction.Transactional;
 import java.util.Optional;
@@ -15,7 +14,6 @@ public class VehicleService {
 
   private final VehiclesClient vehiclesClient;
   private final VehicleRepository vehicleRepository;
-  private final VehicleMapper vehicleMapper;
 
   @Transactional
   public void syncPage(int page) {
@@ -46,8 +44,21 @@ public class VehicleService {
 
                 vehicleRepository.save(existing);
               } else {
-                Vehicle newvehicle = vehicleMapper.toEntity(fields, apiId);
-                vehicleRepository.save(newvehicle);
+                Vehicle newVehicle = new Vehicle();
+                newVehicle.setApiVehicleId(apiId);
+                newVehicle.setName(fields.getName());
+                newVehicle.setModel(fields.getModel());
+                newVehicle.setManufacturer(fields.getManufacturer());
+                newVehicle.setCostInCredits(fields.getCostInCredits());
+                newVehicle.setLength(fields.getLength());
+                newVehicle.setMaxAtmospheringSpeed(fields.getMaxAtmospheringSpeed());
+                newVehicle.setCrew(fields.getCrew());
+                newVehicle.setPassengers(fields.getPassengers());
+                newVehicle.setCargoCapacity(fields.getCargoCapacity());
+                newVehicle.setConsumables(fields.getConsumables());
+                newVehicle.setVehicleClass(fields.getVehicleClass());
+
+                vehicleRepository.save(newVehicle);
               }
             });
   }
